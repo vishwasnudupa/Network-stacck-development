@@ -114,11 +114,18 @@ Linux networking solves this with **NAPI (New API)**:
 
 ```mermaid
 stateDiagram-v2
+    classDef C_Idle fill:#e8f4f8,stroke:#2b7a78,stroke-width:2px,color:#17252a
+    classDef C_Active fill:#def2f1,stroke:#3aafa9,stroke-width:2px,color:#17252a
+    
     [*] --> Idle
-    Idle --> Hard_IRQ : Packet arrives (Hardware Interrupt)
-    Hard_IRQ --> NAPI_Polling : Disable Hard IRQs, Schedule SoftIRQ
-    NAPI_Polling --> NAPI_Polling : Loop: Read 64 packets from Ring Buffer
-    NAPI_Polling --> Idle : Ring Buffer Empty, Re-enable Hard IRQs
+    Idle --> Hard_IRQ : Packet Arrives
+    Hard_IRQ --> NAPI_Polling : Schedule SoftIRQ
+    NAPI_Polling --> NAPI_Polling : Read 64 packets
+    NAPI_Polling --> Idle : Ring Buffer Empty
+    
+    class Idle C_Idle
+    class Hard_IRQ C_Active
+    class NAPI_Polling C_Active
 ```
 
 1. The hardware fires *one* interrupt.

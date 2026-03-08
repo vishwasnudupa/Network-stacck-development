@@ -50,8 +50,8 @@ Devices in BLE are heavily asymmetrical to save power.
 
 ```mermaid
 sequenceDiagram
-    participant Peripheral (e.g., Temp Sensor)
-    participant Central (e.g., Linux Gateway)
+    participant Peripheral as Peripheral (e.g., Temp Sensor)
+    participant Central as Central (e.g., Linux Gateway)
     
     Note over Peripheral: Wakes up every 500ms
     Peripheral->>Central: ADV_IND (I am unassigned Temp Sensor)

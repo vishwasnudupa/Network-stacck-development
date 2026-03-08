@@ -28,16 +28,17 @@ sequenceDiagram
 
 ```mermaid
 graph LR
-    A[Driver calls `request_firmware()`] --> B[Kernel creates sysfs node]
-    B --> C[Kernel broadcasts uevent]
-    C --> D[Udev daemon wakes up]
-    D --> E{File in /lib/firmware/?}
-    E -->|Yes| F[Udev writes blob to sysfs]
-    E -->|No| G[Driver Probe Fails -2]
-    F --> H[Driver DMAs to AX200]
-    
-    style E fill:#f96,stroke:#333
-    style H fill:#bbf,stroke:#333
+    classDef C_Kernel fill:#ece2f0,stroke:#1c9099,stroke-width:2px,color:#000
+    classDef C_Udev fill:#fff2e6,stroke:#e6550d,stroke-width:2px,color:#000
+    classDef C_Fail fill:#fee0d2,stroke:#de2d26,stroke-width:2px,color:#000
+
+    A["Driver calls request_firmware"]:::C_Kernel --> B["Kernel creates sysfs node"]:::C_Kernel
+    B --> C["Kernel broadcasts uevent"]:::C_Kernel
+    C --> D["Udev daemon wakes up"]:::C_Udev
+    D --> E{"File in /lib/firmware/?"}:::C_Udev
+    E -->|Yes| F["Udev writes blob to sysfs"]:::C_Udev
+    E -->|No| G["Driver Probe Fails -2"]:::C_Fail
+    F --> H["Driver DMAs to AX200"]:::C_Kernel
 ```
 
 ## Applying the Firmware

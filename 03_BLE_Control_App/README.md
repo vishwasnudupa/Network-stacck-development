@@ -7,11 +7,14 @@ Specifically, we will build a GATT client in Python utilizing `bleak` and D-Bus 
 
 ```mermaid
 graph TD
-    A[Python Application] -->|D-Bus API| B[bluetoothd (BlueZ Daemon)]
-    B -->|HCI Sockets| C[Linux Kernel: Bluetooth Subsystem]
-    C -->|HCI UART / USB| D[Hardware: AX200 Bluetooth Radio]
-    
-    style B fill:#bbf,stroke:#333,stroke-width:2px;
+    classDef C_App fill:#e0f7fa,stroke:#006064,stroke-width:2px,color:#000
+    classDef C_Daemon fill:#e8eaf6,stroke:#283593,stroke-width:2px,color:#000
+    classDef C_Kernel fill:#f1f8e9,stroke:#33691e,stroke-width:2px,color:#000
+    classDef C_HW fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#000
+
+    A["Python Application"]:::C_App -->|D-Bus API| B["bluetoothd BlueZ Daemon"]:::C_Daemon
+    B -->|HCI Sockets| C["Linux Kernel Bluetooth Subsystem"]:::C_Kernel
+    C -->|HCI UART / USB| D["Hardware AX200 Bluetooth Radio"]:::C_HW
 ```
 
 On Linux, interaction with Bluetooth is primarily abstracted over D-Bus objects exposed by the `bluetoothd` daemon.

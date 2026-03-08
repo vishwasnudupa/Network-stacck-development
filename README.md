@@ -58,6 +58,8 @@ Follow the modules in order to build the stack from the ground up, or jump into 
 | **[Module 4: Wi-Fi Apps](./04_WiFi6_Control_App/)** | User Space | Writing a Python script using `nmcli` to dynamically control NetworkManager for Station (Client) and AP (Hotspot) modes. |
 | **[Module 5: Wi-Fi Protocols](./05_WiFi_Stack_And_Protocols/)** | Theory / Forensics| CSMA/CA, 802.11 Frame analysis, FullMAC vs SoftMAC, and using `iw` and monitor mode for packet interception. |
 | **[Module 6: BLE Protocols](./06_Bluetooth_Stack_And_Protocols/)** | Theory / Forensics| The BLE host-controller split, GAP States, GATT Handles, and sniffing local packets using `btmon`. |
+| **[Module 7: IoT Gateway Capstone](./07_Capstone_IoT_Gateway/)** | Application | Capstone project weaving a NetworkManager Hotspot, a Bleak D-Bus scanner, and a Flask Web UI into an off-grid Edge Gateway. |
+| **[Module 8: BlueZ Framework](./08_BlueZ_Framework_Intro/)** | Deep Dive | Detailed introduction to BlueZ, `bluetoothd`, D-Bus APIs, and advanced Classic/LE Mesh features on Linux. |
 
 ## Key Takeaways
 1. **D-Bus is King**: Modern Linux completely abstracts radio hardware away from User Space via IPC (NetworkManager and BlueZ).
